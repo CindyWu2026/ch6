@@ -11,7 +11,7 @@ public class Ch6
      {
          //String msg="I have a pointer, I have a null";
          //String msg=",.:;()[]{}!@#$%^&*";
-         System.out.print(pigLatin("car"));
+         System.out.print(pigLatin("I love stracraft"));
          
      }
     public static boolean isPalindrome(String str)
@@ -48,10 +48,10 @@ public class Ch6
         }
         return ans;
     }
-    public static String pigLatin(String msg)
+    public static String reverseWord(String msg)
     {
         String ans="";
-        if(msg.length()<-2)
+        if(msg.length()<=2)
         {
             ans+=msg;
         }
@@ -59,6 +59,19 @@ public class Ch6
         {
             ans=ans+ msg.substring(1,msg.length())+msg.substring(0,1)+"ay";
         }
+        return ans;
+    }
+    public static String pigLatin(String msg)
+    {
+        String ans="";
+        while(msg.indexOf(" ")>=0)
+        {
+            int spaceIndex=msg.indexOf(" ");
+            String word=msg.substring(0,spaceIndex);
+            ans+=reverseWord(word)+" ";
+            msg=msg.substring(spaceIndex+1);
+        }
+        ans+=reverseWord(msg);
         return ans;
     }
 }
